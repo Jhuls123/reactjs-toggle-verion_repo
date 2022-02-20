@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Toggle from "./components/Toggle";
+import { SpreadState } from "./Helpers/UseContext";
+import React, { useState } from "react"
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [toggle, setToggle] = useState(false);
+	return (
+		<SpreadState.Provider value={{toggle, setToggle}}>
+			<div className={`App ${toggle ? 'dark' : ''}`}>
+				<Toggle />
+			</div>
+		</SpreadState.Provider>
+	);
 }
 
 export default App;

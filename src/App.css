@@ -1,38 +1,62 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
 .App {
-  text-align: center;
+	background-color: #333;
+	height: 100vh;
+	padding: 2rem;
+	transition: background-color 300ms linear;
+  display: grid;
+  place-content: center;
+}
+.App.dark {
+	background-color: #ddd;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+svg {
+	font-size: 20px;
+	color: #f39c12;
+}
+.checkbox {
+	position: absolute;
+	top: -9000px;
+	right: -9000px;
+	opacity: 0;
+}
+.checkbox:checked + .icon_box::before {
+	left: 37px;
+	background-color: #333;
+	transition: all 300ms linear;
+}
+.checkbox:checked + .icon_box {
+	background-color: #ddd;
+	transition: background-color 300ms linear;
+	box-shadow: 1.1px 1.1px 3px #333;
+}
+.icon_box {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.3);
+	padding: 0.5em;
+	width: 70px;
+	border-radius: 50px;
+	transition: background-color 300ms linear;
+	position: relative;
+}
+.icon_box::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 3px;
+	height: 30px;
+	width: 30px;
+	border-radius: 50px;
+	background-color: #ddd;
+	transform: translateY(-50%);
+	transition: left 300ms linear;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
